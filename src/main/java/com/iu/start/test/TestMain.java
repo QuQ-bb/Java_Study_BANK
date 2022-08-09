@@ -11,20 +11,20 @@ public class TestMain {
 		BankMembersDTO bankMembersDTO = new BankMembersDTO();
 		BankMembersDAO bankMembersDAO = new BankMembersDAO();
 		ArrayList<BankMembersDTO> al = new ArrayList<BankMembersDTO>();
-//		bankMembersDTO.setUsername("ID3");
-//		bankMembersDTO.setPassword("PW3");
-//		bankMembersDTO.setName("돌맹이");
-//		bankMembersDTO.setEmail("stone@gmail.com");
-//		bankMembersDTO.setPhone("010-3333-3333");
+		bankMembersDTO.setUsername("ID3");
+		bankMembersDTO.setPassword("PW3");
+		bankMembersDTO.setName("돌맹이");
+		bankMembersDTO.setEmail("stone@gmail.com");
+		bankMembersDTO.setPhone("010-3333-3333");
 		
 		try {
-//			int result =bankMembersDAO.setJoin(bankMembersDTO);
-//			
-//			if(result > 0) {
-//				System.out.println("성공");
-//			}else {
-//				System.out.println("실패");
-//			}
+			int result =bankMembersDAO.setJoin(bankMembersDTO);
+			
+			if(result > 0) {
+				System.out.println("성공");
+			}else {
+				System.out.println("실패");
+			}
 			
 			al = bankMembersDAO.getSearchByID("ID3");
 			if(al.size()>0) {
