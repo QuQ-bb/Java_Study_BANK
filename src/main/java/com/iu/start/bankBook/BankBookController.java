@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,13 +24,14 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value="detail", method =RequestMethod.GET)
-	public String detail(BankBookDTO bankBookDTO)throws Exception {
+	public String detail(BankBookDTO bankBookDTO, Model model)throws Exception {
 		System.out.println("bankbook detail 실행");
 //		System.out.println("booknum =" + booknum);
 //		BankBookDTO bankBookDTO = new BankBookDTO();
 		BankBookDAO bankBookDAO = new BankBookDAO();
 		
 		 bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
+		 model.addAttribute("book", bankBookDAO);
 		
 		return "bankbook/detail";
 	}

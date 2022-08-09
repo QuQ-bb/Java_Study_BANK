@@ -23,6 +23,7 @@
 	<table border="1">
 		<tr>
 			<td>BookNum : <%=bankBookDTO.getBooknum() %></td>
+			<td><input type="text" name="username" value="${book.username}"></td>
 			<td>BookName : <%=bankBookDTO.getBookname() %></td>
 			<td>BookRate : <%=bankBookDTO.getBookrate() %></td>
 			<td>
