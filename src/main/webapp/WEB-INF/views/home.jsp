@@ -11,6 +11,10 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
- <a href ="">Login</a>
+ <a href ="/member/login">Login</a><br>
+ <a href="/member/join">Join</a><br>
+ <a href="/bankbook/list">List</a><br>
+ <a href="/bankbook/detail">Detail</a><br>
+ <a href="/bankbook/add">상품등록</a>
 </body>
 </html>
