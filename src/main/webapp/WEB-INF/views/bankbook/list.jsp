@@ -21,7 +21,6 @@
 	
 	<!-- /bankbook/detail jsp: detail.jsp -->
 	<!-- link 주소는 상대경로 작성 -->
-	<a href="./detail">Detail</a>
 	
 	<!-- 훙냥따리~ -->
 	<table border="1">
@@ -56,10 +55,9 @@
 				</tr>
 			<% } %>
 		</tbody>
-		
-	
 	</table>
 	
+	<a href="add">GoodsRegister</a>
 	
 </body>
 </html>

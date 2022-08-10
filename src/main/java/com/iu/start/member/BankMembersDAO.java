@@ -36,7 +36,7 @@ public class BankMembersDAO implements MembersDAO {
 
 	public ArrayList<BankMembersDTO> getSearchByID(String search)throws Exception{
 		Connection con = DBConnector.getConnection();
-		String sql ="SELECT USERNAME FROM BANKMEMBERS WHERE USERNAME LIKE '%'||?||'%' ORDER BY USERNAME ASC";
+		String sql ="SELECT * FROM BANKMEMBERS WHERE USERNAME LIKE '%'||?||'%' ORDER BY USERNAME ASC";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, "%"+search+"%");
 		ResultSet rs = ps.executeQuery();
@@ -47,6 +47,9 @@ public class BankMembersDAO implements MembersDAO {
 			bankMembersDTO = new BankMembersDTO();
 			
 			bankMembersDTO.setUsername(rs.getString("USERNAME"));
+			bankMembersDTO.setName(rs.getString("NAME"));
+			bankMembersDTO.setEmail(rs.getString("EMAIL"));
+			bankMembersDTO.setPhone(rs.getString("PHONE"));
 			al.add(bankMembersDTO);
 		}
 		

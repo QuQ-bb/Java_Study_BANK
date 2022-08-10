@@ -1,5 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
 	<title>Home</title>
@@ -15,6 +16,8 @@
  <a href="/member/join">Join</a><br>
  <a href="/bankbook/list">List</a><br>
  <a href="/bankbook/detail">Detail</a><br>
- <a href="/bankbook/add">상품등록</a>
+ <a href="/bankbook/add">GoodsRegister</a><br>
+ <a href="/member/search">IDSearch</a>
+ 히잉
 </body>
 </html>
