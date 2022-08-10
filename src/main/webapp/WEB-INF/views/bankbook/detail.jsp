@@ -19,6 +19,8 @@
 	<!-- 절대경로 -->
 	<a href="/member/join">Join</a>
 	
+	
+	<form action="detail">
 		<%if(bankBookDTO != null){ %>
 	<table border="1">
 		<tr>
@@ -38,6 +40,8 @@
 	<%}else { %>
 		<h3>Data가 존재하지 않습니다.</h3>
 	<% } %>
+	</form>
+	<a href="list">Back List</a>
 
 </body>
 </html>
