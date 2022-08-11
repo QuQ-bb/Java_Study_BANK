@@ -9,6 +9,30 @@ import com.iu.start.util.DBConnector;
 
 public class BankMembersDAO implements MembersDAO {
 	BankMembersDTO bankMembersDTO = null;
+	
+	public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO)throws Exception{
+		Connection con = DBConnector.getConnection();
+		String sql = "SELECT USERNAME,NAME FROM BANKMEMBERS WHERE USERNAME=? AND PASSWORD=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, bankMembersDTO.getUsername());
+		ps.setString(2, bankMembersDTO.getPassword());
+		//최종 전송
+		ResultSet rs = ps.executeQuery();
+		
+		if(rs.next()) { //꺼낼 컬럼 가져오기
+			bankMembersDTO = new BankMembersDTO();
+			
+			bankMembersDTO.setUsername(rs.getString("USERNAME"));
+			bankMembersDTO.setName(rs.getNString("NAME"));
+		}else {
+			return null;
+		}
+		DBConnector.disConnect(rs, ps, con);
+		
+		return bankMembersDTO;
+	}
+	
+	
 	@Override
 	public int setJoin(BankMembersDTO bankMembersDTO)throws Exception{
 		

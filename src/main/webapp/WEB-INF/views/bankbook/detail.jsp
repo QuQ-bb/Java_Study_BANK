@@ -2,9 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%-- 
 <%
+	//요청이 발생하면 생성, 응답이 나가면 소멸: RequestScope
 	BankBookDTO bankBookDTO = (BankBookDTO)request.getAttribute("detail");
-%>    
+%> 
+--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,27 +24,18 @@
 	
 	
 	<form action="detail">
-		<%if(bankBookDTO != null){ %>
 	<table border="1">
 		<tr>
-			<td>BookNum : <%=bankBookDTO.getBooknum() %></td>
-			<td><input type="text" name="username" value="${book.username}"></td>
-			<td>BookName : <%=bankBookDTO.getBookname() %></td>
-			<td>BookRate : <%=bankBookDTO.getBookrate() %></td>
-			<td>
-			BookSale : <%if(bankBookDTO.getBooksale() == 1){ %>
-						판매중
-						<%}else { %>
-						판매중단	
-			<% } %>
-			</td>
+			<td>BookNum  : ${requestScope.detail.getBooknum() }</td>
+			<td>BookName : ${requestScope.detail.bookname}</td>
+			<td>BookRate : ${detail.bookrate}</td>
+			<td>BookSale : ${detail.booksale} </td>
 		</tr>	
 	</table>
-	<%}else { %>
-		<h3>Data가 존재하지 않습니다.</h3>
-	<% } %>
 	</form>
 	<a href="list">Back List</a>
+	<a href="update?booknum=${detail.booknum}">Update</a>
+	<a href="delete?booknum=${detail.booknum}">Delete</a>
 
 </body>
 </html>

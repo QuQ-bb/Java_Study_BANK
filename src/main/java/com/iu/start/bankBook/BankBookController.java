@@ -2,6 +2,8 @@ package com.iu.start.bankBook;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,13 +28,14 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value="detail", method =RequestMethod.GET)
-	public ModelAndView detail(BankBookDTO bankBookDTO)throws Exception {
+	public ModelAndView detail(BankBookDTO bankBookDTO,HttpServletRequest request)throws Exception {
 		System.out.println("bankbook detail 실행");
 		ModelAndView mv = new ModelAndView();
 		BankBookDAO bankBookDAO = new BankBookDAO();
 		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
 		mv.setViewName("bankbook/detail");
-		mv.addObject("detail", bankBookDTO);
+//		mv.addObject("detail", bankBookDTO);
+		request.setAttribute("detail", bankBookDTO);
 	
 		return mv;
 	}
@@ -61,6 +64,47 @@ public class BankBookController {
 		mv.setViewName("redirect:list");
 		
 		return mv;
+	}
+	
+	@RequestMapping(value="update", method=RequestMethod.GET)
+	public void update(BankBookDTO bankBookDTO,Model model)throws Exception{
+		System.out.println("UPDATE GET 실행");BankBookDAO bankBookDAO = new BankBookDAO();
+		//booknum을 갖고 있는 detail다 가져오려고 메서드 가져와서 쓰기
+		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
+		System.out.println(bankBookDTO.getBooknum());
+		System.out.println(bankBookDTO.getBookname());
+		System.out.println(bankBookDTO.getBookrate());
+		
+		model.addAttribute("update", bankBookDTO);
+	}
+	
+	@RequestMapping(value="update" , method= RequestMethod.POST)
+	public String setUpdate(BankBookDTO bankBookDTO)throws Exception{
+		System.out.println("update post 실행");
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		int result = bankBookDAO.setUpdate(bankBookDTO);
+		
+		if(result == 1) {
+			System.out.println("update 성공");
+		}else {
+			System.out.println("update 실패");
+		}
+		return "redirect:detail?booknum="+bankBookDTO.getBooknum();
+	}
+	@RequestMapping(value="delete" , method =RequestMethod.GET)
+	public String  delete(BankBookDTO bankBookDTO)throws Exception{
+		System.out.println("DELETE 실행");
+		
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		int result =bankBookDAO.setDelete(bankBookDTO);
+		
+		if(result == 1) {
+			System.out.println("DELETE 성공");
+		}else {
+			System.out.println("DELETE 실패");
+		}
+		
+		return "redirect:list";
 	}
 
 }

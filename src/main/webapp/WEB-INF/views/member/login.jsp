@@ -14,11 +14,11 @@
 		
 		        <div>
 		            ID
-		            <input type="text" name="id" placeholder="ID를 입력해주세요.">
+		            <input type="text" name="username" placeholder="ID를 입력해주세요.">
 		        </div>
 		        <div>
 		            PW
-		            <input type="password" name="pw" placeholder="PW를 입력해주세요.">
+		            <input type="password" name="password" placeholder="PW를 입력해주세요.">
 		        </div>
 		        <div>
 		           <input type="checkbox" name="check">  ID Remember  

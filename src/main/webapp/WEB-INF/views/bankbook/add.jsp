@@ -11,9 +11,9 @@
 	
 	<form action="./add" method="post">
 	<table>
-		<div>
+		<!-- <div>
 		통장번호 : <input type="text" name ="booknum" placeholder="BookNum을 입력해주세요.">
-		</div>
+		</div> -->
 		<div>
 		통장이름 : <input type="text" name = "bookname" placeholder="BookName을 입력해주세요.">
 		</div>

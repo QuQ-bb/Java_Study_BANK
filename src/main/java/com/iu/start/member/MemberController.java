@@ -3,6 +3,7 @@ package com.iu.start.member;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,9 +25,18 @@ public class MemberController {
 		return "member/login";
 	}
 	@RequestMapping(value=" login", method=RequestMethod.POST)  //요청에 대한 mapping
-	public String login(BankMembersDTO bankMembersDTO) {
+	public String login(BankMembersDTO bankMembersDTO,Model model)throws Exception {
 		System.out.println("로그인 실행");
-		
+		BankMembersDAO bankMembersDAO = new BankMembersDAO();
+		bankMembersDTO =  bankMembersDAO.getLogin(bankMembersDTO);
+		System.out.println(bankMembersDTO.getUsername());
+		System.out.println(bankMembersDTO.getName());
+		if(bankMembersDTO != null) {
+			System.out.println("로그인 성공");
+		}else {
+			System.out.println("로그인 실패");
+		}
+		model.addAttribute("login", bankMembersDTO);
 		//"redirect: 다시접속할 URL주소(절대경로,상대경로);
 		return "redirect:/";
 	}

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.iu.start.util.DBConnector;
 
@@ -11,12 +12,47 @@ public class BankBookDAO implements BookDAO{
 	
 	BankBookDTO bankBookDTO = null;
 	
+	public int setDelete(BankBookDTO bankBookDTO)throws Exception{
+		Connection con  = DBConnector.getConnection();
+		String sql ="DELETE BANKBOOK WHERE BOOKNUM =?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		 ps.setLong(1, bankBookDTO.getBooknum());
+		 
+		 int result = ps.executeUpdate();
+		 
+		 DBConnector.disConnect(ps, con);
+		
+		return result;
+	}
+	
+	
+	public int setUpdate(BankBookDTO bankBookDTO)throws Exception {
+		//db 연결
+		Connection con = DBConnector.getConnection();
+		//sql 작성
+		String sql = "UPDATE BANKBOOK SET BOOKNAME = ? ,BOOKRATE = ? WHERE BOOKNUM= ? ";
+		//미리전송
+		PreparedStatement ps = con.prepareStatement(sql);
+		//물음표 값 셋팅!!!! 이거 잘 기억이 안나 시봉봉
+		ps.setString(1, bankBookDTO.getBookname());
+		ps.setDouble(2, bankBookDTO.getBookrate());
+		ps.setLong(3, bankBookDTO.getBooknum());
+		//
+		int result  = ps.executeUpdate(); 
+		
+		DBConnector.disConnect(ps, con);
+		
+		return result;
+		
+	}
+	
 	public int setBankBook(BankBookDTO bankbookDTO)throws Exception{
+		Calendar ca = Calendar.getInstance();
 		Connection con = DBConnector.getConnection();
 		String sql ="INSERT INTO BANKBOOK VALUES(?,?,?,1)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		//?값 세팅해주기
-		ps.setLong(1, bankbookDTO.getBooknum());
+		ps.setLong(1, ca.getTimeInMillis());
 		ps.setString(2, bankbookDTO.getBookname());
 		ps.setDouble(3, bankbookDTO.getBookrate());
 		
