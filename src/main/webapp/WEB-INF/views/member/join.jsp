@@ -9,7 +9,7 @@
 <body>
 	<h1>Join Page</h1>
 	
-	<form action="./join" method="post">
+	<form action="./join.jp" method="post">
         <h1>회원가입</h1>
         <div>
             ID : <input type="text" name="username" placeholder="ID를 입력해 주세요.">

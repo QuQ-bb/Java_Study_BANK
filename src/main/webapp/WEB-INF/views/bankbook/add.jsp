@@ -9,7 +9,7 @@
 <body>
 	<h3>Add Page</h3>
 	
-	<form action="./add" method="post">
+	<form action="./add.jp" method="post">
 	<table>
 		<!-- <div>
 		통장번호 : <input type="text" name ="booknum" placeholder="BookNum을 입력해주세요.">

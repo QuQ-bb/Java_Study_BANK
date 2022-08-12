@@ -9,7 +9,7 @@
 <body>
 	<h1>Login Page</h1>
 
-		<form action="./login" method="post"> <!-- action="요청주소" -->
+		<form action="./login.jp" method="post"> <!-- action="요청주소" -->
 		        <h1>로그인</h1>
 		
 		        <div>

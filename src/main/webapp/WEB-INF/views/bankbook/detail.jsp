@@ -1,6 +1,7 @@
 <%@page import="com.iu.start.bankBook.BankBookDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 
 <%-- 
 <%
@@ -18,12 +19,12 @@
 	<h1>Detail Page</h1>
 	
 	<!-- 상대경로 -->
-	<a href="../member/login">Login</a>
+	<a href="../member/login.jp">Login</a>
 	<!-- 절대경로 -->
-	<a href="/member/join">Join</a>
+	<a href="/member/join.jp">Join</a>
 	
 	
-	<form action="detail">
+	<form action="detail.jp">
 	<table border="1">
 		<tr>
 			<td>BookNum  : ${requestScope.detail.getBooknum() }</td>
@@ -33,9 +34,12 @@
 		</tr>	
 	</table>
 	</form>
-	<a href="list">Back List</a>
-	<a href="update?booknum=${detail.booknum}">Update</a>
-	<a href="delete?booknum=${detail.booknum}">Delete</a>
+	<a href="list.jp">Back List</a>
+	<a href="update.jp?booknum=${detail.booknum}">Update</a>
+	<a href="delete.jp?booknum=${detail.booknum}">Delete</a>
+	<c:if test="${not empty sessionScope.member }">
+	<a href="../bankAccount/add.jp?booknum=${detail.booknum}">AccountJoin</a>
+	</c:if>
 
 </body>
 </html>

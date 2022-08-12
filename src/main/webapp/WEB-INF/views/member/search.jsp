@@ -9,7 +9,7 @@
 <body>
 
 	<h3>Search Page</h3>
-	<form action="" method = "post">
+	<form action="search.jp" method = "post">
 		<table>
 			<input type="text" name="username">	
 			<input type="submit" value="search">

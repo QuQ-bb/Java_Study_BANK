@@ -10,7 +10,7 @@
 	<h3>Update Page</h3>
 	<h1>델리만쥬 먹고싶다</h1>
 	
-	<form action="update" method="post">
+	<form action="update.jp" method="post">
 	<table>
 		<div>
 		Num : <input type="hidden" name ="booknum" value="${update.booknum}" readonly>
@@ -28,7 +28,7 @@
 		<input type="submit" value ="update">
 		<button type="submit">수정</button>
 		<br>
-		<a href="detail?booknum=${update.booknum}">Back Detail</a>
+		<a href="detail.jp?booknum=${update.booknum}">Back Detail</a>
 		
 		</tr>	
 	

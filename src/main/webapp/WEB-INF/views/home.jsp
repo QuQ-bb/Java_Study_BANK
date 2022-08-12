@@ -11,19 +11,19 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-	<c:if test="${empty login}">
- <a href ="/member/login">Login</a><br>
- <a href="/member/join">Join</a><br>
+	<c:if test="${empty sessionScope.member}">
+ <a href ="/member/login.jp">Login</a><br>
+ <a href="/member/join.jp">Join</a><br>
 	</c:if>
-	<c:if test="${not empty login }">
- <a href="#">Logout</a><br>
+	<c:if test="${not empty sessionScope.member }">
+	<h3>${member.name}님 환영합니다.</h3>
+ <a href="/member/logout.jp">Logout</a><br>
  <a href="#">MyPage</a><br>
 	 </c:if>
- <a href="/bankbook/list">List</a><br>
- <a href="/bankbook/detail">Detail</a><br>
- <a href="/bankbook/add">GoodsRegister</a><br>
- <a href="/member/search">IDSearch</a><br>
- <a href="/member/list">MemberList</a>
+ <a href="/bankbook/list.jp">List</a><br>
+ <a href="/bankbook/detail.jp">Detail</a><br>
+ <a href="/bankbook/add.jp">GoodsRegister</a><br>
+ <a href="/member/search.jp">IDSearch</a><br>
  히잉
 </body>
 </html>

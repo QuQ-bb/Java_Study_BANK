@@ -35,7 +35,7 @@
 		  		<tr>
 		  			<td>${book.booknum}</td>
 		  			<td>
-		  			 <a href="detail?booknum=${book.booknum}">
+		  			 <a href="detail.jp?booknum=${book.booknum}">
 		  			${book.bookname }
 		  			</a>
 		  			</td>
@@ -73,7 +73,7 @@
 		</tbody>
 	</table>
 	
-	<a href="add">GoodsRegister</a>
+	<a href="add.jp">GoodsRegister</a>
 	
 </body>
 </html>

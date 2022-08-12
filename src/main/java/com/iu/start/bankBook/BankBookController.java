@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/bankbook/*")
 public class BankBookController {
 	
-	@RequestMapping(value="list" , method =RequestMethod.GET)
+	@RequestMapping(value="list.jp" , method =RequestMethod.GET)
 	public String list(Model model)throws Exception {
 		
 //		ModelAndView mv = new ModelAndView();
@@ -27,7 +27,7 @@ public class BankBookController {
 		return "bankbook/list";
 	}
 	
-	@RequestMapping(value="detail", method =RequestMethod.GET)
+	@RequestMapping(value="detail.jp", method =RequestMethod.GET)
 	public ModelAndView detail(BankBookDTO bankBookDTO,HttpServletRequest request)throws Exception {
 		System.out.println("bankbook detail 실행");
 		ModelAndView mv = new ModelAndView();
@@ -42,14 +42,14 @@ public class BankBookController {
 	
 	//void return 형태로 쓸떄는 value 값에 있는 걸로 url요청을 한다
 	//요청 url이  /bankbook/add  return값도 /bankbook/add로 같다면 리턴하지않고 void 를 사용할 수 있다.
-	@RequestMapping(value="add", method=RequestMethod.GET)
+	@RequestMapping(value="add.jp", method=RequestMethod.GET)
 	public String add() {
 		System.out.println("add get 실행");
 		
 		return "bankbook/add";
 	}
 	
-	@RequestMapping(value="add", method=RequestMethod.POST)
+	@RequestMapping(value="add.jp", method=RequestMethod.POST)
 	public ModelAndView add(BankBookDTO bankBookDTO)throws Exception {
 		System.out.println("add post 실행");
 		ModelAndView mv = new ModelAndView();
@@ -61,12 +61,12 @@ public class BankBookController {
 		}else {
 			System.out.println("삽입실패");
 		}
-		mv.setViewName("redirect:list");
+		mv.setViewName("redirect:list.jp");
 		
 		return mv;
 	}
 	
-	@RequestMapping(value="update", method=RequestMethod.GET)
+	@RequestMapping(value="update.jp", method=RequestMethod.GET)
 	public void update(BankBookDTO bankBookDTO,Model model)throws Exception{
 		System.out.println("UPDATE GET 실행");BankBookDAO bankBookDAO = new BankBookDAO();
 		//booknum을 갖고 있는 detail다 가져오려고 메서드 가져와서 쓰기
@@ -78,7 +78,7 @@ public class BankBookController {
 		model.addAttribute("update", bankBookDTO);
 	}
 	
-	@RequestMapping(value="update" , method= RequestMethod.POST)
+	@RequestMapping(value="update.jp" , method= RequestMethod.POST)
 	public String setUpdate(BankBookDTO bankBookDTO)throws Exception{
 		System.out.println("update post 실행");
 		BankBookDAO bankBookDAO = new BankBookDAO();
@@ -89,9 +89,9 @@ public class BankBookController {
 		}else {
 			System.out.println("update 실패");
 		}
-		return "redirect:detail?booknum="+bankBookDTO.getBooknum();
+		return "redirect:detail.jp?booknum="+bankBookDTO.getBooknum();
 	}
-	@RequestMapping(value="delete" , method =RequestMethod.GET)
+	@RequestMapping(value="delete.jp" , method =RequestMethod.GET)
 	public String  delete(BankBookDTO bankBookDTO)throws Exception{
 		System.out.println("DELETE 실행");
 		
@@ -104,7 +104,7 @@ public class BankBookController {
 			System.out.println("DELETE 실패");
 		}
 		
-		return "redirect:list";
+		return "redirect:list.jp";
 	}
 
 }
