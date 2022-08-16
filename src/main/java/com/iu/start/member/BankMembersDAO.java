@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.iu.start.util.DBConnector;
+import org.springframework.stereotype.Repository;
 
+import com.iu.start.util.DBConnector;
+@Repository
 public class BankMembersDAO implements MembersDAO {
 	BankMembersDTO bankMembersDTO = null;
 	

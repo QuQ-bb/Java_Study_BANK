@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller	
 @RequestMapping(value="/member/*")
 public class MemberController {
+	
+	@Autowired
+	private BankMembersService bankMembersService;
+	
+//	@Autowired
+//	public MemberController(BankMembersDAO bankMembersDAO) {
+//		this.bankMembersDAO =bankMembersDAO;
+//	}
+	
 	
 	// annotation
 	// @ : 설명 + 실행 하라는 것을 내포중
@@ -36,8 +46,8 @@ public class MemberController {
 	@RequestMapping(value=" login.jp", method=RequestMethod.POST)  //요청에 대한 mapping
 	public String login(HttpServletRequest request, BankMembersDTO bankMembersDTO,Model model)throws Exception {
 		System.out.println("로그인 실행");
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
-		bankMembersDTO =  bankMembersDAO.getLogin(bankMembersDTO);
+//		BankMembersDAO bankMembersDAO = new BankMembersDAO();
+		bankMembersDTO =  bankMembersService.getLogin(bankMembersDTO);
 		System.out.println(bankMembersDTO.getUsername());
 		System.out.println(bankMembersDTO.getName());
 		HttpSession session = request.getSession();
@@ -66,9 +76,9 @@ public class MemberController {
 	@RequestMapping(value ="join.jp" , method = RequestMethod.POST)
 	public String join(BankMembersDTO bankMembersDTO)throws Exception { //달라 4달라
 		System.out.println("회원가입 post 실행");
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
+//		BankMembersDAO bankMembersDAO = new BankMembersDAO();
 		
-			int result = bankMembersDAO.setJoin(bankMembersDTO);
+			int result = bankMembersService.setJoin(bankMembersDTO);
 			if(result == 1) {
 				System.out.println("삽입성공");
 			}else{
@@ -94,8 +104,8 @@ public class MemberController {
 	public ModelAndView getSearchByID(String username)throws Exception {
 		System.out.println("search post 실행");
 		ModelAndView mv = new ModelAndView();
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
-		ArrayList<BankMembersDTO> al = bankMembersDAO.getSearchByID(username);
+//		BankMembersDAO bankMembersDAO = new BankMembersDAO();
+		ArrayList<BankMembersDTO> al = bankMembersService.getSearchByID(username);
 		mv.setViewName("member/list");
 		mv.addObject("search", al);
 		

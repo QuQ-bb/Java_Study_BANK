@@ -4,5 +4,30 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 객체 생성, 갹체 주입 -->
+	<!-- 객체 생성 -->
+	<!-- Engine engine = new Engine() -->
+	<!-- bean == new 디폴트 생성자() -->
+	<bean class="com.iu.start.di.Engine" id="engine"></bean>
+	<bean class="com.iu.start.di.LeftWheel" id="leftWheel"></bean>
+	<bean class="com.iu.start.di.RightWheel" id="rightWheel"></bean>
+	<bean class="com.iu.start.di.Car" id="car"> <!-- 오류나는 이유는 car클래스에 기본생성자가 존재하지 않기때문이다 -->	
+		<constructor-arg index="0" ref="leftWheel"></constructor-arg>
+		<constructor-arg index="1" ref="rightWheel"></constructor-arg>
 		
+			<!-- 매개변수있는 생성자를 넣어주겠다는 코드 -->
+			<!-- index 생성자 매개변수의 index번호 ref="참조변수명" -->
+		 
+		 <!-- constructor-arg name="leftWheel" ref="leftWheel"></constructor-arg>
+		 <constructor-arg name="rightWheel" ref="rightWheel"></constructor-arg> -->
+			<!-- name = 선언한 변수의 매개변수 -->	
+			<!-- <constructor-arg type="com.iu.start.di.Wheel" ref="leftWheel"></constructor-arg>
+			<constructor-arg type="com.iu.start.di.Wheel" ref="rightWheel"></constructor-arg> -->
+			
+		<!-- setter -->
+		<property name="engine" ref="engine"></property>	
+			
+	</bean>		
+	
 </beans>
