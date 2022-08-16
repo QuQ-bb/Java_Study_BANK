@@ -68,7 +68,8 @@ public class BankBookController {
 	
 	@RequestMapping(value="update.jp", method=RequestMethod.GET)
 	public void update(BankBookDTO bankBookDTO,Model model)throws Exception{
-		System.out.println("UPDATE GET 실행");BankBookDAO bankBookDAO = new BankBookDAO();
+		System.out.println("UPDATE GET 실행");
+		BankBookDAO bankBookDAO = new BankBookDAO();
 		//booknum을 갖고 있는 detail다 가져오려고 메서드 가져와서 쓰기
 		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
 		System.out.println(bankBookDTO.getBooknum());

@@ -25,5 +25,13 @@
  <a href="/bankbook/add.jp">GoodsRegister</a><br>
  <a href="/member/search.jp">IDSearch</a><br>
  히잉
+ 
+ <hr><br>
+ August HomeWork<br>
+ <c:if test="${not empty sessionScope.member}"> 
+ <a href="/board/add.jp">Add</a><br>
+ </c:if>
+ <a href="/board/list.jp">BoardList</a><br>
+ <a href="/board/detail.jp">Detail</a>
 </body>
 </html>
